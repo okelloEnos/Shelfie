@@ -4,6 +4,7 @@ import { Slot, Stack } from 'expo-router'
 import { Colors } from '../constants/Colors'
 import { StatusBar } from 'expo-status-bar'
 import { UserProvider } from '../contexts/UserContext'
+import { BooksProvider } from '../contexts/BooksContext'
 
 export default function RootLayout() {
     const colorScheme = useColorScheme()
@@ -11,18 +12,20 @@ export default function RootLayout() {
 
     return (
         <UserProvider>
-            <StatusBar value="auto" />
-            <Stack screenOptions={{
-                headerStyle: { backgroundColor: theme.navBackground },
-                headerTintColor: theme.title
-            }}>
-                {/* Individual Screens - Keep index first to make it the initial screen */}
-                <Stack.Screen name='index' options={{ title: "Home", headerTitleAlign: "center" }} />
+            <BooksProvider>
+                <StatusBar value="auto" />
+                <Stack screenOptions={{
+                    headerStyle: { backgroundColor: theme.navBackground },
+                    headerTintColor: theme.title
+                }}>
+                    {/* Individual Screens - Keep index first to make it the initial screen */}
+                    <Stack.Screen name='index' options={{ title: "Home", headerTitleAlign: "center" }} />
 
-                {/* Groups */}
-                <Stack.Screen name='(auth)' options={{ headerShown: false }} />
-                <Stack.Screen name='(dashboard)' options={{ headerShown: false }} />
-            </Stack>
+                    {/* Groups */}
+                    <Stack.Screen name='(auth)' options={{ headerShown: false }} />
+                    <Stack.Screen name='(dashboard)' options={{ headerShown: false }} />
+                </Stack>
+            </BooksProvider>
         </UserProvider>
     )
 }

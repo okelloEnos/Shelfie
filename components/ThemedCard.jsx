@@ -9,7 +9,7 @@ const ThemedCard = ({ style, ...props }) => {
     return (
         <View style={[{
             backgroundColor: theme.uiBackground,
-        }, styles.cardstyle]}
+        }, styles.card, style]}
             {...props}
         />
     )
